@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+    version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+  
+      <persistence-unit name="employees" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        
+      <!-- Entweder ALLE Entity KLassen hier aufzählen oder exclude-unlisted-classes auf false, dann werden alle @Entity-Klassen aufgenommen 
+      <class>at.ac.htlinn.jpa.uni.Student</class>
+      <class>at.ac.htlinn.jpa.uni.Professor</class>
+      <class>at.ac.htlinn.jpa.uni.Assistent</class>
+        --> 
+       <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <!-- JDBC Connection Info -->
+      <property name="javax.persistence.jdbc.driver"   value="com.mysql.cj.jdbc.Driver" />
+      <property name="javax.persistence.jdbc.url"      value="jdbc:mysql://localhost/employees?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC" />
+      <property name="javax.persistence.jdbc.user"     value="root" />
+      <property name="javax.persistence.jdbc.password" value="root" />
+      
+      <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
+       <!--  Werte: 
+       		create-tables, create-or-extend-tables, drop-and-create-tables, none
+   		-->
+      <property name="eclipselink.ddl-generation.output-mode" value="both"/>
+       <!-- oder nur: value='database' -->
+      <property name="eclipselink.create-ddl-jdbc-file-name" value="./sql/bsp01_create.ddl"/>
+      <property name="eclipselink.drop-ddl-jdbc-file-name" value="./sql/bsp01_drop.ddl"/>
+      <property name="eclipselink.logging.level" value="SEVERE"/>
+      <!-- Werte: SEVERE FINE, WARNING, INFO, CONFIG, FINER, FINEST, OFF-->   		
+    </properties>
+  </persistence-unit>
+</persistence>
