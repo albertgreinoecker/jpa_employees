@@ -53,18 +53,7 @@ public class DBManager {
 	
 	public Employee getEmployee(long empno) {
 		EntityManager em = emf.createEntityManager();
-		// JPQL - Java Persistence Query Language - nicht SQL
-		String sql = "SELECT e FROM Employee e  WHERE e.emp_no = :empNo";
-		Query query = em.createQuery(sql, Employee.class);
-		query.setParameter("empNo", empno);
-		Employee employee = null;
-		try
-		{
-			employee = (Employee)query.getSingleResult();
-		} catch (NoResultException e)
-		{
-			e.printStackTrace();
-		}
+		Employee employee = em.find(Employee.class, empno);
 		em.close();
 		return employee;
 	}
