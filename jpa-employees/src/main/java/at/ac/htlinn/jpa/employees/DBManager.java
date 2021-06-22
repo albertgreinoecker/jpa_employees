@@ -17,10 +17,11 @@ public class DBManager {
 		
 	}
 
-	public Department getDepartment(String persNr)
+	
+	public Department getDepartment(String deptNo)
 	{
 		EntityManager em = emf.createEntityManager();
-		Department professor = em.find(Department.class, persNr);
+		Department professor = em.find(Department.class, deptNo);
 		em.close();
 		return professor;
 	}
