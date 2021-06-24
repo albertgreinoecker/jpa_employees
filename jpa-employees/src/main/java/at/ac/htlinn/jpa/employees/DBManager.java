@@ -51,7 +51,14 @@ public class DBManager {
 		return salaries;
 	}
 	
-	public Employee getEmployee(long empno) {
+	public Title getTitle(long empno) {
+		EntityManager em = emf.createEntityManager();
+		Title title = em.find(Title.class, empno);
+		em.close();
+		return title;
+	}
+	
+	public Employee getEmployee(int empno) {
 		EntityManager em = emf.createEntityManager();
 		Employee employee = em.find(Employee.class, empno);
 		em.close();

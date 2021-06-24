@@ -30,6 +30,9 @@ public class Employee {
 	@JoinColumn(name="emp_no", nullable=false)
 	private List<Salary> salaries;
 	
+	@OneToMany
+	@JoinColumn(name="emp_no", nullable=false)
+	private List<Title> titles;
 	
 	@OneToMany(mappedBy = "employee")
 	private List<DeptEmp> deptEmp;
