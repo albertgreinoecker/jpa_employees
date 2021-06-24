@@ -1,9 +1,9 @@
 package at.ac.htlinn.jpa.employees;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,14 +14,13 @@ import javax.persistence.Table;
 public class Salary {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private int emp_no;
 	private int salary;
+	@Id
 	@Column(name = "from_date")
-	private String fromDate;
+	private Date fromDate;
 	@Column(name = "to_date")
-	private String toDate;
+	private Date toDate;
 
 	@ManyToOne
 	@JoinColumn(name = "emp_no", nullable = false, insertable=false, updatable=false)
@@ -30,7 +29,7 @@ public class Salary {
 	public Salary() {
 	}
 
-	public Salary(int emp_no, int salary, String fromDate, String toDate, Employee employee) {
+	public Salary(int emp_no, int salary, Date fromDate, Date toDate, Employee employee) {
 		super();
 		this.emp_no = emp_no;
 		this.salary = salary;
@@ -55,19 +54,19 @@ public class Salary {
 		this.salary = salary;
 	}
 
-	public String getFromDate() {
+	public Date getFromDate() {
 		return fromDate;
 	}
 
-	public void setFromDate(String fromDate) {
+	public void setFromDate(Date fromDate) {
 		this.fromDate = fromDate;
 	}
 
-	public String getToDate() {
+	public Date getToDate() {
 		return toDate;
 	}
 
-	public void setToDate(String toDate) {
+	public void setToDate(Date toDate) {
 		this.toDate = toDate;
 	}
 
