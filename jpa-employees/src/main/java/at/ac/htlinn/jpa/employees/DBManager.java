@@ -83,7 +83,7 @@ public class DBManager {
 		return salary;
 	}
 	
-	public void loescheEmployee(int matrNr)
+	public void removeEmployee(int matrNr)
 	{
 		EntityManager em = emf.createEntityManager(); 
 		Employee employee = getEmployee(matrNr); 
@@ -91,7 +91,7 @@ public class DBManager {
 		em.close();
 	}
 	
-	public void aendereEmployee(Employee s)
+	public void changeEmployee(Employee s)
 	{
 		EntityManager em = emf.createEntityManager(); 	
 		em.getTransaction().begin();
@@ -99,6 +99,30 @@ public class DBManager {
 		em.getTransaction().commit();
 		em.close();
 	}
+	
+	public List<Salary> getSalary(int empNo) {
+
+		// EntityManager em = emf.createEntityManager();
+		// Salary sal = em.find(Salary.class, empNo);
+		// em.close();
+		// return sal;
+		EntityManager em = emf.createEntityManager();
+		// JPQL - Java Persistence Query Language - nicht SQL
+		String sql = "SELECT s FROM Salary s WHERE s.empNo = :empNo";
+		Query query = em.createQuery(sql, Salary.class);
+		query.setParameter("empNo", empNo);
+		List<Salary> salary = null;
+		try
+		{
+		salary = (List<Salary>)query.getResultList();
+		} catch (NoResultException e)
+		{
+		e.printStackTrace();
+		}
+		em.close();
+		return salary;
+
+		}
 	
 	public void close() {
 		emf.close();
