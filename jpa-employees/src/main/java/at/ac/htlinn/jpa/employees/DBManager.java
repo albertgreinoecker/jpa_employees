@@ -86,7 +86,6 @@ public class DBManager {
 		String sql = "SELECT s FROM Salary s WHERE s.emp_no = :empNo AND s.toDate = :date";
 		Query query = em.createQuery(sql, Employee.class);
 		query.setParameter("empNo", empno);
-		System.out.println(d);
 		query.setParameter("date", d);
 		Salary salary = null;
 		try {
