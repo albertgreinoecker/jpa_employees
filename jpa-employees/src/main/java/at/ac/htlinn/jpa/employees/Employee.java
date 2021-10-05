@@ -2,6 +2,7 @@ package at.ac.htlinn.jpa.employees;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,18 +27,18 @@ public class Employee {
 	private String hire_date;
 	private int pw;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="emp_no", nullable=false)
 	private List<Salary> salaries;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="emp_no", nullable=false)
 	private List<Title> titles;
 	
-	@OneToMany(mappedBy = "employee")
+	@OneToMany(mappedBy = "employee",cascade=CascadeType.REMOVE)
 	private List<DeptEmp> deptEmp;
 
-	@OneToMany(mappedBy = "employee")
+	@OneToMany(mappedBy = "employee",cascade=CascadeType.REMOVE)
 	private List<DeptManager> deptManager;
 	
 	public Employee() {
