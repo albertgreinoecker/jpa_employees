@@ -32,6 +32,13 @@ public class Runner {
 		Salary actual = db.getActualSalary(10001);
 		System.out.println(actual);
 		
+		System.out.println();
+		System.out.println("What is the title of the employee:");
+		for (Title t : e.getTitles())
+		{
+			System.out.printf("%s (%s)\n", t.getTitle(), t.getFromDate());
+		}
+		
 		Date d = new SimpleDateFormat( "yyyyMMdd" ).parse( "19870626" );
 		Salary s = db.getSalary(10001, d); 
 		System.out.println();
@@ -59,7 +66,7 @@ public class Runner {
 		}	
 
 		System.out.println("Now we change the employee");
-		Employee e2 = db.getEmployee(10003);
+		Employee e2 = db.getEmployee(10004);
 		System.out.println(e2);
 		e2.setLastname("ein neuer Name");
 		db.changeEmployee(e2);

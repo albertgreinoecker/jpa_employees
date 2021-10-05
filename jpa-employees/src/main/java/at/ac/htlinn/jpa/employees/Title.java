@@ -22,6 +22,8 @@ public class Title {
 	@JoinColumn(name = "emp_no")
 	private Employee employee;
 
+	private String title;
+	
 	public Title() {
 	}
 
@@ -49,9 +51,19 @@ public class Title {
 		this.employee = employee;
 	}
 
+	
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	@Override
 	public String toString() {
-		return "Title [emp_no=" + employee + ", fromDate=" + fromDate + ", toDate=" + toDate + ", employee=" + employee
+		return "Title [fromDate=" + fromDate + ", toDate=" + toDate + ", employee=" + employee + ", title=" + title
 				+ "]";
 	}
 
