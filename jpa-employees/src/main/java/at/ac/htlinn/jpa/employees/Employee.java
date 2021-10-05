@@ -16,31 +16,31 @@ import javax.persistence.Table;
 @Table(name = "employees")
 public class Employee {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int emp_no;
 	private String birth_date;
-	@Column(name="first_name")
+	@Column(name = "first_name")
 	private String firstname;
-	@Column(name="last_name")
+	@Column(name = "last_name")
 	private String lastname;
 	private char gender;
 	private String hire_date;
 	private int pw;
-	
-	@OneToMany(cascade=CascadeType.REMOVE)
-	@JoinColumn(name="emp_no", nullable=false)
+
+	@OneToMany(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "emp_no", nullable = false)
 	private List<Salary> salaries;
-	
-	@OneToMany(cascade=CascadeType.REMOVE)
-	@JoinColumn(name="emp_no", nullable=false)
+
+	@OneToMany(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "emp_no", nullable = false)
 	private List<Title> titles;
-	
-	@OneToMany(mappedBy = "employee",cascade=CascadeType.REMOVE)
+
+	@OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE)
 	private List<DeptEmp> deptEmp;
 
-	@OneToMany(mappedBy = "employee",cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE)
 	private List<DeptManager> deptManager;
-	
+
 	public Employee() {
 	}
 
@@ -100,8 +100,6 @@ public class Employee {
 		this.pw = pw;
 	}
 
-	
-	
 	public List<Salary> getSalaries() {
 		return salaries;
 	}
@@ -110,9 +108,6 @@ public class Employee {
 		this.salaries = salaries;
 	}
 
-	
-	
-	
 	public List<DeptEmp> getDeptEmp() {
 		return deptEmp;
 	}
@@ -120,8 +115,6 @@ public class Employee {
 	public void setDeptEmp(List<DeptEmp> deptEmp) {
 		this.deptEmp = deptEmp;
 	}
-	
-	
 
 	public List<DeptManager> getDeptManager() {
 		return deptManager;
@@ -131,10 +124,18 @@ public class Employee {
 		this.deptManager = deptManager;
 	}
 
+	public List<Title> getTitles() {
+		return titles;
+	}
+
+	public void setTitles(List<Title> titles) {
+		this.titles = titles;
+	}
+
 	@Override
 	public String toString() {
 		return "Employees [emp_no=" + emp_no + ", birth_date=" + birth_date + ", firstname=" + firstname + ", lastname="
 				+ lastname + ", gender=" + gender + ", hire_date=" + hire_date + ", pw=" + pw + "]";
 	}
-	
+
 }
