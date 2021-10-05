@@ -13,10 +13,11 @@ import javax.persistence.Table;
 public class DeptEmp {
 	@Id
 	@JoinColumn(name="emp_no")
-	Employee employee;
+	private Employee employee;
+	
 	@Id
 	@JoinColumn(name="dept_no")
-	Department department;
+	private Department department;
 	
 	@Column(name="from_date")
 	private Date fromDate;
@@ -25,9 +26,6 @@ public class DeptEmp {
 	
 	public DeptEmp() {
 	}
-
-
-	
 
 	public Employee getEmployee() {
 		return employee;
