@@ -1,5 +1,7 @@
 package at.ac.htlinn.jpa.employees;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,9 +15,9 @@ public class Title {
 
 	@Id
 	@Column(name = "from_date")
-	private String fromDate;
+	private Date fromDate;
 	@Column(name = "to_date")
-	private String toDate;
+	private Date toDate;
 
 	@Id
 	@ManyToOne
@@ -23,23 +25,23 @@ public class Title {
 	private Employee employee;
 
 	private String title;
-	
+
 	public Title() {
 	}
 
-	public String getFromDate() {
+	public Date getFromDate() {
 		return fromDate;
 	}
 
-	public void setFromDate(String fromDate) {
+	public void setFromDate(Date fromDate) {
 		this.fromDate = fromDate;
 	}
 
-	public String getToDate() {
+	public Date getToDate() {
 		return toDate;
 	}
 
-	public void setToDate(String toDate) {
+	public void setToDate(Date toDate) {
 		this.toDate = toDate;
 	}
 
@@ -51,8 +53,6 @@ public class Title {
 		this.employee = employee;
 	}
 
-	
-	
 	public String getTitle() {
 		return title;
 	}
