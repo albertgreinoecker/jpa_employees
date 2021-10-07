@@ -70,22 +70,22 @@ public class DBManager {
 		return employee;
 	}
 
-	public Salary getActualSalary(long empno) {
+	public Salary getActualSalary(Employee employee) {
 		Date d9999 = null;
 		try {
 			d9999 = new SimpleDateFormat("yyyyMMdd").parse("99990101");
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		return getSalary(empno, d9999);
+		return getSalary(employee, d9999);
 	}
 
-	public Salary getSalary(long empno, Date d) {
+	public Salary getSalary(Employee employee, Date d) {
 
 		EntityManager em = emf.createEntityManager();
-		String sql = "SELECT s FROM Salary s WHERE s.emp_no = :empNo AND s.toDate = :date";
+		String sql = "SELECT s FROM Salary s WHERE s.employee = :employee AND s.toDate = :date";
 		Query query = em.createQuery(sql, Employee.class);
-		query.setParameter("empNo", empno);
+		query.setParameter("employee", employee);
 		query.setParameter("date", d);
 		Salary salary = null;
 		try {

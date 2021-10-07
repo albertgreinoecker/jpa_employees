@@ -29,7 +29,7 @@ public class Runner {
 		
 		System.out.println();
 		System.out.println("This is the actual salary:");
-		Salary actual = db.getActualSalary(10001);
+		Salary actual = db.getActualSalary(e);
 		System.out.println(actual);
 		
 		System.out.println();
@@ -40,7 +40,7 @@ public class Runner {
 		}
 		
 		Date d = new SimpleDateFormat( "yyyyMMdd" ).parse( "19870626" );
-		Salary s = db.getSalary(10001, d); 
+		Salary s = db.getSalary(e, d); 
 		System.out.println();
 		System.out.printf("the salary earned until %s\n",d);
 		System.out.println(s);

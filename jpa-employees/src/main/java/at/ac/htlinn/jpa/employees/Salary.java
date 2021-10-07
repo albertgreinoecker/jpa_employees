@@ -12,38 +12,27 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "salaries")
 public class Salary {
-
-	@Id
-	private int emp_no;
 	private int salary;
 	@Id
 	@Column(name = "from_date")
 	private Date fromDate;
 	@Column(name = "to_date")
 	private Date toDate;
-
+	
+	@Id
 	@ManyToOne
-	@JoinColumn(name = "emp_no", nullable = false, insertable=false, updatable=false)
+	@JoinColumn(name = "emp_no")
 	private Employee employee;
 
 	public Salary() {
 	}
 
-	public Salary(int emp_no, int salary, Date fromDate, Date toDate, Employee employee) {
+	public Salary(int salary, Date fromDate, Date toDate, Employee employee) {
 		super();
-		this.emp_no = emp_no;
 		this.salary = salary;
 		this.fromDate = fromDate;
 		this.toDate = toDate;
 		this.employee = employee;
-	}
-
-	public int getEmp_no() {
-		return emp_no;
-	}
-
-	public void setEmp_no(int emp_no) {
-		this.emp_no = emp_no;
 	}
 
 	public int getSalary() {
@@ -80,7 +69,7 @@ public class Salary {
 
 	@Override
 	public String toString() {
-		return "Salary [empNo=" + emp_no + ", salary=" + salary + ", fromDate=" + fromDate + ", toDate=" + toDate
+		return "Salary [salary=" + salary + ", fromDate=" + fromDate + ", toDate=" + toDate
 				+ ", employee=" + employee + "]";
 	}
 }
